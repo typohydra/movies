@@ -35,6 +35,22 @@ export const reducer = (state, action) => {
         ),
       };
     }
+    case "TOGGLE_MOVIE_FAVOURITE": {
+      const isAlreadyFavourited = state.user.favourites.includes(
+        action.payload
+      );
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          favourites: isAlreadyFavourited
+            ? state.user.favourites.filter(
+                (movieID) => movieID !== action.payload
+              )
+            : state.user.favourites.concat(action.payload),
+        },
+      };
+    }
     default:
       return state;
   }
@@ -58,4 +74,9 @@ export const setGenresAction = (genres) => ({
 export const setFilteredMoviesAction = (genre) => ({
   type: "SET_FILTERED_MOVIES",
   payload: genre,
+});
+
+export const toggleMovieFavourite = (movieID) => ({
+  type: "TOGGLE_MOVIE_FAVOURITE",
+  payload: movieID,
 });

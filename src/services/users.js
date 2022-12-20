@@ -56,4 +56,25 @@ const getUser = async (userID) => {
   return user;
 };
 
-export { getAll, getUser, signUp, logIn };
+const toggleMovieFavourtieService = async (userID, movieID) => {
+  const res = await getUser(userID);
+  const user = res.data;
+  let updatedUser;
+  if (user.favourites.includes(movieID)) {
+    updatedUser = {
+      ...user,
+      favourites: user.favourites.filter((id) => movieID !== id),
+    };
+  } else {
+    updatedUser = {
+      ...user,
+      favourites: user.favourites.concat(movieID),
+    };
+  }
+
+  const newUser = await axios.put(`${baseUrl}/${userID}`, updatedUser);
+
+  return newUser;
+};
+
+export { getAll, getUser, signUp, logIn, toggleMovieFavourtieService };
