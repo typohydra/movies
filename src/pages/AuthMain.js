@@ -7,8 +7,12 @@ import {
   useStateValue,
   setMoviesAction,
   setGenresAction,
+  setFilteredMoviesAction,
 } from "../state";
 import MoviesMain from "./MoviesMain";
+import { Favourites } from "./Favourites";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const AuthMain = ({ setToken }) => {
   const [state, dispatch] = useStateValue();
@@ -24,6 +28,7 @@ const AuthMain = ({ setToken }) => {
     const fetchMovies = async () => {
       const movies = await getAllMovies();
       dispatch(setMoviesAction(movies));
+      dispatch(setFilteredMoviesAction("All"));
     };
 
     const fetchGenres = async () => {
@@ -47,9 +52,28 @@ const AuthMain = ({ setToken }) => {
 
   return (
     <div>
-      <div>logged in {state.user.email}</div>
-      <button onClick={handleLogOut}>Log Out</button>
-      <MoviesMain />
+      <Router>
+        <nav className="auth-nav">
+          <div className="auth-nav__links">
+            <Link to="/">
+              <button className="auth-nav__links__btn">Home</button>
+            </Link>
+            <Link to="/favourites">
+              <button className="auth-nav__links__btn">Favourites</button>
+            </Link>
+          </div>
+          <button className="auth-nav__btn--logout" onClick={handleLogOut}>
+            Log Out
+          </button>
+        </nav>
+
+        <div className="authMain">
+          <Routes>
+            <Route path="/" element={<MoviesMain />} />
+            <Route path="/favourites" element={<Favourites />} />
+          </Routes>
+        </div>
+      </Router>
     </div>
   );
 };

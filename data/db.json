@@ -8,6 +8,7 @@
     }
   ],
   "genres": [
+    "All",
     "Comedy",
     "Fantasy",
     "Crime",
@@ -25,9 +26,7 @@
     "Romance",
     "Sci-Fi",
     "War",
-    "Western",
-    "Horror",
-    "Musical",
+    "Music",
     "Sport"
   ],
   "movies": [

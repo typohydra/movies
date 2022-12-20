@@ -3,7 +3,9 @@ import React, { createContext, useContext, useReducer } from "react";
 const initialState = {
   user: {},
   movies: [],
-  genres: []
+  genres: [],
+  filteredMovies: [],
+  genre: "All",
 };
 
 const StateContext = createContext(initialState, () => initialState);

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useStateValue } from "../state";
+import { useStateValue, setIsFilterSelectedAction } from "../state";
 import MoviesListItem from "./MovieListItem";
 import ReactPaginate from "react-paginate";
 
@@ -18,7 +18,7 @@ function PaginatedMoviesList({ itemsPerPage }) {
   const [state, dispatch] = useStateValue();
   const [itemOffset, setItemOffset] = useState(0);
 
-  const items = state.movies;
+  const items = state.filteredMovies;
 
   const endOffset = itemOffset + itemsPerPage;
   const currentMovies = items.slice(itemOffset, endOffset);

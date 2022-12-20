@@ -1,10 +1,25 @@
-import React from "react";
-import MoviesList from "../components/MoviesList";
+import React, {useState} from "react";
+import PaginatedMoviesList from "../components/MoviesList";
+import { setFilteredMoviesAction, setIsFilterSelectedAction, useStateValue } from "../state";
 
 const MoviesMain = () => {
+  const [state, dispatch] = useStateValue();
+
+  const handleFilter = (genre) => {
+    if(state.genre === genre) return;
+    dispatch(setFilteredMoviesAction(genre));
+  };
+
   return (
     <div>
-      <MoviesList itemsPerPage={8} />
+      <div className="filters">
+        {state.genres.map((genre, i) => (
+          <button onClick={() => handleFilter(genre)} className="filters__btn" key={i}>
+            {genre}
+          </button>
+        ))}
+      </div>
+      <PaginatedMoviesList itemsPerPage={8} />
     </div>
   );
 };
