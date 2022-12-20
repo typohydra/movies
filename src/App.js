@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import UnAuthMain from "./pages/UnAuthMain";
+import AuthMain from "./pages/AuthMain";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+  const [token, setToken] = useState();
+
+  useEffect(() => {
+    const token = localStorage.getItem("user");
+    if (token) {
+      setToken(token);
+    }
+  }, []);
+
+  if (token) {
+    return <AuthMain setToken={setToken} />;
+  }
+
+  return <UnAuthMain setToken={setToken} />;
+};
 
 export default App;
