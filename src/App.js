@@ -13,9 +13,7 @@ import { Favourites } from "./pages/Favourites";
 import SingleMovieView from "./pages/SingleMovieView";
 import MoviesMain from "./pages/MoviesMain";
 
-import {
-  useStateValue,
-} from "./state";
+import { useStateValue } from "./state";
 import { fetchUser, fetchGenres, fetchMovies } from "./utils/refetch";
 
 const App = () => {
@@ -54,12 +52,15 @@ const App = () => {
             path="/movies"
             element={token ? <MoviesMain /> : <Navigate to="/" />}
           />
-          <Route path="/signup" element={<SignUp />} />
+          <Route
+            path="/signup"
+            element={token ? <Navigate to="/movies" /> : <SignUp />}
+          />
           <Route
             path="/favourites"
             element={token ? <Favourites /> : <Navigate to="/" />}
           />
-          <Route path="*" element={<div>Not Found</div>} />
+          <Route path="*" element={<div style={{textAlign: "center"}}>Not Found</div>} />
         </Routes>
       </Router>
     </div>

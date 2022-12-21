@@ -32,7 +32,7 @@ const SignUp = () => {
 
   const handleSubmit = async (user) => {
     try {
-      const res = await signUp(user);
+      await signUp(user);
       navigate("/");
     } catch (error) {
       setError(error.message);

@@ -4,13 +4,21 @@
       "email": "test@test.com",
       "password": "$2a$10$exf3yYk4yRT8uUkFFc68z.aP1UPBwjGaq.v4BH56sZolq336Fl.9q",
       "favourites": [
-        17,
         76,
         73,
         20,
-        4
+        4,
+        2
       ],
       "id": 1
+    },
+    {
+      "email": "test2@test2.com",
+      "password": "$2a$10$wxxs2dhS/4m5UwW7eFwVJOtJY2kZJYK3NO2rxA4awfNRKJ5HZN.Am",
+      "favourites": [
+        2
+      ],
+      "id": 2
     }
   ],
   "genres": [
