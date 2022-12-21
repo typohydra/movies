@@ -1,4 +1,5 @@
 $color-primary-white: #ffffff;
+$color-secondary-white: #f0f0f0;
 $color-primary-gray: gray;
 $color-secondary-gray: darkgray;
 $color-primary-red: #e63946;
@@ -154,8 +155,16 @@ $auth-nav-height: 50px;
     min-width: 80px;
     border: none;
     background-color: $color-primary-white;
+    
     &:hover {
       color: $color-secondary-gray;
+    }
+
+    &--selected {
+      min-width: 80px;
+      border: none;
+      background-color: $color-secondary-white;
+      color: $color-primary-gray
     }
   }
 }
@@ -193,7 +202,6 @@ $auth-nav-height: 50px;
     }
 
     &__item {
-
       &__container {
         position: relative;
 

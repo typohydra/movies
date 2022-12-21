@@ -16,7 +16,7 @@ const MoviesMain = () => {
         {state.genres.map((genre, i) => (
           <button
             onClick={() => handleFilter(genre)}
-            className="filters__btn"
+            className={state.genre === genre ? "filters__btn--selected" : "filters__btn"}
             key={i}
           >
             {genre}
