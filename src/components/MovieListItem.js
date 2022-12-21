@@ -8,21 +8,22 @@ const MovieListItem = ({ movie }) => {
   const [state, dispatch] = useStateValue();
 
   const handleToggleFavourite = async (e) => {
+    e.preventDefault(); // stop click propagation
     await toggleMovieFavourtieService(state.user.id, movie.id);
     dispatch(toggleMovieFavourite(movie.id));
   };
 
   return (
-    <div className="movies-list__item">
-      <div className="movies-list__item__container">
+    <div className="movies-list__link__item">
+      <div className="movies-list__link__item__container">
         <img
-          className="movies-list__item__container__img"
+          className="movies-list__link__item__container__img"
           src={movie.posterUrl}
           alt={`${movie.title} poster`}
         />
         <div
           onClick={handleToggleFavourite}
-          className="movies-list__item__container__favourite"
+          className="movies-list__link__item__container__favourite"
         >
           {state.user.favourites.includes(movie.id) ? (
             <img src={heartRed} alt="red heart" />
@@ -31,7 +32,7 @@ const MovieListItem = ({ movie }) => {
           )}
         </div>
       </div>
-      <div className="movies-list__item__info">
+      <div className="movies-list__link__item__info">
         <div>{movie.title}</div>
       </div>
     </div>

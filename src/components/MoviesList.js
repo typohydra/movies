@@ -12,7 +12,7 @@ export const MoviesList = ({ currentMovies }) => {
   return (
     <div className="movies-list">
       {currentMovies.map((movie) => (
-        <Link to={`/movies/${movie.id}`} key={movie.id}>
+        <Link className="movies-list__link" to={`/movies/${movie.id}`} key={movie.id}>
           <MoviesListItem movie={movie} />
         </Link>
       ))}
