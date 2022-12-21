@@ -7,11 +7,8 @@ import { toggleMovieFavourite, useStateValue } from "../state";
 const MovieListItem = ({ movie }) => {
   const [state, dispatch] = useStateValue();
 
-  const handleToggleFavourite = async () => {
-    const updatedUser = await toggleMovieFavourtieService(
-      state.user.id,
-      movie.id
-    );
+  const handleToggleFavourite = async (e) => {
+    await toggleMovieFavourtieService(state.user.id, movie.id);
     dispatch(toggleMovieFavourite(movie.id));
   };
 
@@ -21,15 +18,16 @@ const MovieListItem = ({ movie }) => {
         <img
           className="movies-list__item__container__img"
           src={movie.posterUrl}
+          alt={`${movie.title} poster`}
         />
         <div
           onClick={handleToggleFavourite}
           className="movies-list__item__container__favourite"
         >
           {state.user.favourites.includes(movie.id) ? (
-            <img src={heartRed} />
+            <img src={heartRed} alt="red heart" />
           ) : (
-            <img src={heart} />
+            <img src={heart} alt="heart" />
           )}
         </div>
       </div>

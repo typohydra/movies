@@ -51,6 +51,15 @@ export const reducer = (state, action) => {
         },
       };
     }
+    case "REMOVE_MOVIE": {
+      return {
+        ...state,
+        movies: state.movies.filter((movie) => movie.id !== action.payload),
+        filteredMovies: state.movies.filter(
+          (movie) => movie.id !== action.payload
+        ),
+      };
+    }
     default:
       return state;
   }
@@ -78,5 +87,10 @@ export const setFilteredMoviesAction = (genre) => ({
 
 export const toggleMovieFavourite = (movieID) => ({
   type: "TOGGLE_MOVIE_FAVOURITE",
+  payload: movieID,
+});
+
+export const removeMovieAction = (movieID) => ({
+  type: "REMOVE_MOVIE",
   payload: movieID,
 });

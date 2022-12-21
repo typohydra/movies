@@ -1,6 +1,6 @@
 $color-primary-white: #ffffff;
-$color-primary-gray: gray; 
-$color-secondary-gray: darkgray; 
+$color-primary-gray: gray;
+$color-secondary-gray: darkgray;
 $color-primary-red: #e63946;
 
 $gray-box-shadow: 2px 2px 7px $color-primary-gray;
@@ -131,10 +131,10 @@ $auth-nav-height: 50px;
   }
 
   &__btn--logout {
-    border: none;   
+    border: none;
     padding: 10px;
     background-color: $color-primary-white;
-    
+
     &:hover {
       color: $color-secondary-gray;
     }
@@ -218,6 +218,48 @@ $auth-nav-height: 50px;
       display: flex;
       flex-wrap: wrap;
       padding: 10px;
+    }
+  }
+}
+
+.single-movie-view-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 10px;
+  margin: ($auth-nav-height * 1.6) 0px;
+
+  // background-color: skyblue;
+
+  @media (max-width: 650px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__more {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 10px;
+    max-width: 300px;
+
+    &__title {
+      font-weight: bold;
+    }
+
+    &__btn--delete {
+      background-color: $color-primary-red;
+      border: none;
+      color: $color-primary-white;
+      padding: 10px;
+      box-shadow: $gray-box-shadow;
+
+      transition: 0.3s;
+
+      &:hover {
+        background-color: $color-primary-gray;
+      }
     }
   }
 }

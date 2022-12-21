@@ -5,6 +5,7 @@ import { useStateValue, setUserAction } from "../state";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link } from "react-router-dom";
 import { ErrorMessageWrapper } from "../utils/ErrorMessageWrapper";
+import { useNavigate } from "react-router-dom";
 
 const userLogInSchema = yup.object().shape({
   email: yup
@@ -21,15 +22,16 @@ const initialState = {
 };
 
 const LogIn = ({ setToken }) => {
-  const [state, dispatch] = useStateValue();
+  const [, dispatch] = useStateValue();
   const [error, setError] = useState();
+  const navigate = useNavigate();
 
   const handleSubmit = async (user) => {
     try {
       const res = await logIn(user);
       dispatch(setUserAction(res));
       setToken(res.id);
-      console.log(res);
+      navigate("/movies");
     } catch (error) {
       setError(error.message);
       console.log("error", error.message);

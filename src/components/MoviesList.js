@@ -1,28 +1,40 @@
 import React, { useState } from "react";
-import { useStateValue, setIsFilterSelectedAction } from "../state";
+import { useStateValue } from "../state";
 import MoviesListItem from "./MovieListItem";
 import ReactPaginate from "react-paginate";
+import { Link } from "react-router-dom";
 
-const MoviesList = ({ currentMovies }) => {
-  console.log(currentMovies);
+export const MoviesList = ({ currentMovies }) => {
+  if (!currentMovies.length) {
+    return <div className="movies-list">Nothing To Show</div>;
+  }
+
   return (
     <div className="movies-list">
       {currentMovies.map((movie) => (
-        <MoviesListItem key={movie.id} movie={movie} />
+        <Link to={`/movies/${movie.id}`} key={movie.id}>
+          <MoviesListItem movie={movie} />
+        </Link>
       ))}
     </div>
   );
 };
 
-function PaginatedMoviesList({ itemsPerPage }) {
-  const [state, dispatch] = useStateValue();
+const PaginatedMoviesList = ({ itemsPerPage }) => {
+  const [state] = useStateValue();
   const [itemOffset, setItemOffset] = useState(0);
 
   const items = state.filteredMovies;
 
-  const endOffset = itemOffset + itemsPerPage;
-  const currentMovies = items.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(items.length / itemsPerPage);
+  let endOffset = itemOffset + itemsPerPage;
+  let currentMovies = items.slice(itemOffset, endOffset);
+  let pageCount = Math.ceil(items.length / itemsPerPage);
+
+  if (!currentMovies.length) {
+    endOffset = itemsPerPage;
+    currentMovies = items.slice(0, endOffset);
+    pageCount = Math.ceil(items.length / itemsPerPage);
+  }
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % items.length;
@@ -46,6 +58,6 @@ function PaginatedMoviesList({ itemsPerPage }) {
       />
     </>
   );
-}
+};
 
 export default PaginatedMoviesList;

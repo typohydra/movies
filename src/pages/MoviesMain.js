@@ -1,12 +1,12 @@
-import React, {useState} from "react";
+import React from "react";
 import PaginatedMoviesList from "../components/MoviesList";
-import { setFilteredMoviesAction, setIsFilterSelectedAction, useStateValue } from "../state";
+import { setFilteredMoviesAction, useStateValue } from "../state";
 
 const MoviesMain = () => {
   const [state, dispatch] = useStateValue();
 
   const handleFilter = (genre) => {
-    if(state.genre === genre) return;
+    if (state.genre === genre) return;
     dispatch(setFilteredMoviesAction(genre));
   };
 
@@ -14,7 +14,11 @@ const MoviesMain = () => {
     <div>
       <div className="filters">
         {state.genres.map((genre, i) => (
-          <button onClick={() => handleFilter(genre)} className="filters__btn" key={i}>
+          <button
+            onClick={() => handleFilter(genre)}
+            className="filters__btn"
+            key={i}
+          >
             {genre}
           </button>
         ))}

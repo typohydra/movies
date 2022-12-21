@@ -4,19 +4,15 @@
       "email": "test@test.com",
       "password": "$2a$10$exf3yYk4yRT8uUkFFc68z.aP1UPBwjGaq.v4BH56sZolq336Fl.9q",
       "favourites": [
-        6,
+        10,
+        93,
+        11,
+        137,
+        4,
         2,
-        4
+        6
       ],
       "id": 1
-    },
-    {
-      "email": "a@a.a",
-      "password": "$2a$10$5Bnl6BO42gDmpEyQEslqDu8Xno.ZFZkrNwEK9azz1fObYph6ZT6Uq",
-      "favourites": [
-        7
-      ],
-      "id": 2
     }
   ],
   "genres": [

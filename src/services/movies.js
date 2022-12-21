@@ -6,4 +6,9 @@ const getAllMovies = async () => {
   return movies.data;
 };
 
-export { getAllMovies };
+const removeMovie = async (movieID) => {
+  const movie = await axios.delete(`${baseUrl}/${movieID}`);
+  return movie.data;
+};
+
+export { getAllMovies , removeMovie};

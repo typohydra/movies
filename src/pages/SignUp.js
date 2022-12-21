@@ -34,7 +34,6 @@ const SignUp = () => {
     try {
       const res = await signUp(user);
       navigate("/");
-      console.log(res);
     } catch (error) {
       setError(error.message);
       console.log("error", error.message);
