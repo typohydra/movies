@@ -10,10 +10,11 @@ export const Favourites = () => {
   const favouriteMovies = favouriteIDs.map((movieID) =>
     movies.find((movie) => movie.id === movieID)
   );
+  const cleanFavouriteMovies = favouriteMovies.filter(movie => movie)
 
   return (
     <div>
-      <MoviesList currentMovies={favouriteMovies} />
+      <MoviesList currentMovies={cleanFavouriteMovies} />
     </div>
   );
 };
