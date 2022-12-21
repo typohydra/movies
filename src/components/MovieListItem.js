@@ -17,7 +17,7 @@ const MovieListItem = ({ movie }) => {
     <div className="movies-list__link__item">
       <div className="movies-list__link__item__container">
         <img
-          className="movies-list__link__item__container__img"
+          className="movies-list__link__item__container__img single-view-img"
           src={movie.posterUrl}
           alt={`${movie.title} poster`}
         />

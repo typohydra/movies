@@ -26,7 +26,9 @@ const SingleMovieView = () => {
 
   return (
     <div className="single-movie-view-container authMain">
-      <MovieListItem movie={movie} />
+      <div className="single-movie-view-container__poster">
+        <MovieListItem movie={movie} />
+      </div>
       <div className="single-movie-view-container__more">
         <div>
           <div className="single-movie-view-container__more__title">Year</div>{" "}

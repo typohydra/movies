@@ -155,7 +155,7 @@ $auth-nav-height: 50px;
     min-width: 80px;
     border: none;
     background-color: $color-primary-white;
-    
+
     &:hover {
       color: $color-secondary-gray;
     }
@@ -164,7 +164,7 @@ $auth-nav-height: 50px;
       min-width: 80px;
       border: none;
       background-color: $color-secondary-white;
-      color: $color-primary-gray
+      color: $color-primary-gray;
     }
   }
 }
@@ -248,7 +248,21 @@ $auth-nav-height: 50px;
   gap: 10px;
   margin: ($auth-nav-height * 1.6) 0px;
 
-  // background-color: skyblue;
+  @media (max-width: 300px) {
+    --movie-item-width: 100vw;
+    --movie-item-height: 300px;
+  }
+
+  &__poster {
+    box-shadow: $gray-box-shadow;
+
+    max-width: var(--movie-item-width);
+
+    .single-view-img {
+      height: var(--movie-item-height);
+      width: var(--movie-item-width);
+    }
+  }
 
   @media (max-width: 650px) {
     flex-direction: column;
@@ -262,6 +276,7 @@ $auth-nav-height: 50px;
     justify-content: space-evenly;
     gap: 10px;
     max-width: 300px;
+    padding: 0px 5px;
 
     &__title {
       font-weight: bold;
